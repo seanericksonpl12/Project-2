@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
@@ -10,8 +11,10 @@ import java.util.zip.DataFormatException;
 
 public class PokemonDataReader {
 
-	public List<Pokemon> readDataSet(Reader inputFileReader) {
-		Scanner sc = new Scanner(inputFileReader);
+	public List<Pokemon> readDataSet() throws FileNotFoundException  {
+		
+		Scanner sc = new Scanner(new File("src/pokemonGen3.csv"));
+		
 		List<Pokemon> pokemon = new ArrayList<Pokemon>();
 		sc.nextLine();
 		while (sc.hasNext()) {
@@ -65,7 +68,7 @@ public class PokemonDataReader {
 
 				@Override
 				public boolean isLegendary() {
-					return splitted[12].equals("True");
+					return splitted[12].equalsIgnoreCase("True");
 				}
 
 				@Override
@@ -86,5 +89,6 @@ public class PokemonDataReader {
 		}
 		sc.close();
 		return pokemon;
+		
 	}
 }
