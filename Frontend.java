@@ -1,3 +1,11 @@
+// --== CS400 File Header Information ==--
+// Name: Sam Bingenheimer
+// Email: sbingenheime@wisc.edu
+// Team: Blue
+// Role: Frontend Developer
+// TA: hang
+// Lecturer: Gary Dahl
+// Notes to Grader: <optional extra notes>
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.zip.DataFormatException;
@@ -26,7 +34,7 @@ public class Frontend {
   public static void run() {
     System.out.println("Welcome to your pokedex.");
     System.out.println("From this menu you can choose to view pokemon in your pokedex or add new pokemon.");
-    System.out.print("Please select l to lookup pokemon, a to add a new pokemon or x to exit.");
+    System.out.print("Please select: \nl - to lookup pokemon\na - to add a new pokemon\no - to list out all pokemon to add\np - to print out all pokemon in the pokedex\nx - to exit.");
     
     String input = sc.nextLine();
     
@@ -36,7 +44,14 @@ public class Frontend {
       }
       else if (input.equals("a")){
         addPokemon();
-      }else {
+      }
+      else if (input.equals("o")) {
+        listPokemon();
+      }
+      else if (input.equals("p")) {
+        pokedexList();
+      }
+      else {
         System.out.println("Not a valid input. Please enter a valid command.");
         run();
         break;
@@ -121,14 +136,28 @@ public class Frontend {
   }
   
   public static void listPokemon() {
-    System.out.println("To print a full list of your pokemon input l and click enter. Otherwise enter x to exit.");
+    System.out.println("To print a full list of pokemon to add input l and click enter. Otherwise enter x to exit.");
     
     String command = sc.nextLine();
     
     if (command.equals("x")) {
       run();
     }else if (command.equals("l")) {
-      b.getAllNames();
+     System.out.println(b.getAllNames());
+    }
+    
+        
+  }
+  
+  public static void pokedexList() {
+System.out.println("To print a full list of pokemon to add input l and click enter. Otherwise enter x to exit.");
+    
+    String command = sc.nextLine();
+    
+    if (command.equals("x")) {
+      run();
+    }else if (command.equals("l")) {
+     System.out.println(b.pokedexNames());
     }
     
         

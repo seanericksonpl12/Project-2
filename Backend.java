@@ -41,7 +41,6 @@ public class Backend implements BackendInterface{
         if(pok.getName().equals(Name)) {
           nameRBT.insert(pok);
           nameHash.put(Name,pok);
-          System.out.println("Print good");
         }
       }
     }
@@ -77,7 +76,7 @@ public class Backend implements BackendInterface{
   }
 
   @Override
-  public List<String> getAllNames() {
+  public String getAllNames() {
     List<String> nms = new ArrayList<String>();
     // loop through all Pokemon
     for (int i = 0; i < PokemonList.size(); i++) {
@@ -85,14 +84,11 @@ public class Backend implements BackendInterface{
         nms.add(PokemonList.get(i).getName());
       }
     }
-    return nms;
+    return nms.toString();
   }
-  /**
-  @Override
-  public String printRBT(){
-    String toprint = new String();
-    toprint = nameRBT.toString();
-    return toprint;
+  
+  public String pokedexNames() {
+    return names.toString();
   }
-  **/
+  
 }
