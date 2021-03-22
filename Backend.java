@@ -3,26 +3,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.DataFormatException;
+import java.util.HashMap;
 
 public class Backend implements BackendInterface{
-  private RedBlackTree<Pokemon> typeRBT;
-  private RedBlackTree<Pokemon> totalRBT;
   private RedBlackTree<Pokemon> nameRBT;
   private List<Pokemon> PokemonList;
-  private List<String> types;
-  private List<String> totals;
   private List<String> names;
+  private HashMap<String,Pokemon> nameHash;
   
   public Backend() throws DataFormatException, IOException {
-    types = new ArrayList<String>();
-    totals = new ArrayList<String>();
     names = new ArrayList<String>();
-
+    nameHash = new HashMap<String,Pokemon>();
     PokemonDataReader pokemonReader = new PokemonDataReader();
 
     PokemonList = pokemonReader.readDataSet();
-    typeRBT = new RedBlackTree<Pokemon>();
-    totalRBT = new RedBlackTree<Pokemon>();
     nameRBT = new RedBlackTree<Pokemon>();
   }
   
@@ -32,20 +26,6 @@ public class Backend implements BackendInterface{
   }
   
   
-  @Override
-  public void addType(String Type) {
-    if(!types.contains(Type)) {
-      types.add(Type);
-    }
-    
-  }
-
-  @Override
-  public void addTotal(String Total) {
-    if(!totals.contains(Total)) {
-      totals.add(Total);
-    }
-  }
 
   @Override
   public void addName(String Name) {
@@ -55,31 +35,24 @@ public class Backend implements BackendInterface{
         Pokemon pok = PokemonList.get(i);
         if(pok.getName().equals(Name)) {
           nameRBT.insert(pok);
+          nameHash.put(Name,pok);
         }
       }
     }
     return;
   }
 
-  @Override
-  public List<String> getTypes() {
-    return types;
-  }
-
-  @Override
-  public List<String> getAvgTotals() {
-    return totals;
-  }
 
   @Override
   public Pokemon getNames(String PokName) {
-    Pokemon pok = null;
-    for(int i=0;i<PokemonList.size();i++) {
-      if(PokemonList.get(i).getName().equals(PokName)) {
-        pok = PokemonList.get(i);
-      }
+    
+    if(nameHash.containsKey(PokName)) {
+      return nameHash.get(PokName);
     }
-    return pok;
+    else {
+      return null;
+    }
+    
   }
 
   @Override
@@ -88,20 +61,15 @@ public class Backend implements BackendInterface{
   }
 
   @Override
-  public List<String> getAllTypes() {
-    List<String> tps = new ArrayList<String>();
+  public List<String> getAllNames() {
+    List<String> nms = new ArrayList<String>();
     // loop through all Pokemon
     for (int i = 0; i < PokemonList.size(); i++) {
-        // loop through all genres of the movie at i
-        for (int j = 0; j < PokemonList.get(i).getType().size(); j++) {
-            // if list doesn't contain the genre already, remove it
-            if (!tps.contains(PokemonList.get(i).getType().get(j))) {
-              tps.add(PokemonList.get(i).getType().get(j));
-            }
-        }
+      if (!nms.contains(PokemonList.get(i).getName())) {
+        nms.add(PokemonList.get(i).getName());
+      }
     }
-
-    return tps;
+    return nms;
   }
 
  
