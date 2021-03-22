@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.zip.DataFormatException;
 
 public class Backend implements BackendInterface{
-  private RedBlackTree<List<Pokemon>> typeRBT;
+  private RedBlackTree<Pokemon> typeRBT;
   private RedBlackTree<Pokemon> totalRBT;
   private RedBlackTree<Pokemon> nameRBT;
   private List<Pokemon> PokemonList;
@@ -24,7 +24,6 @@ public class Backend implements BackendInterface{
     typeRBT = new RedBlackTree<Pokemon>();
     totalRBT = new RedBlackTree<Pokemon>();
     nameRBT = new RedBlackTree<Pokemon>();
-    RBT();
   }
   
   
@@ -32,18 +31,6 @@ public class Backend implements BackendInterface{
     return PokemonList;
   }
   
-  private void RBT() {
-    for(int i=0;i<PokemonList.size();i++) {
-      Pokemon pok = PokemonList.get(i);
-      for(int j=0;j<pok.getType().size();j++) {
-        if(!typeRBT.contains(pok.getType().get(j))) {
-          List<Pokemon> newList = new ArrayList<Pokemon>();
-          newList.add(pok);
-          typeRBT.insert(pok);
-        }
-      }
-    }
-  }
   
   @Override
   public void addType(String Type) {
@@ -55,14 +42,23 @@ public class Backend implements BackendInterface{
 
   @Override
   public void addTotal(String Total) {
-    // TODO Auto-generated method stub
-    
+    if(!totals.contains(Total)) {
+      totals.add(Total);
+    }
   }
 
   @Override
   public void addName(String Name) {
-    // TODO Auto-generated method stub
-    
+    if(!names.contains(Name)) {
+      names.add(Name);
+      for(int i=0;i<PokemonList.size();i++) {
+        Pokemon pok = PokemonList.get(i);
+        if(pok.getName().equals(Name)) {
+          nameRBT.insert(pok);
+        }
+      }
+    }
+    return;
   }
 
   @Override
@@ -76,14 +72,19 @@ public class Backend implements BackendInterface{
   }
 
   @Override
-  public List<String> getNames() {
-    return names;
+  public Pokemon getNames(String PokName) {
+    Pokemon pok = null;
+    for(int i=0;i<PokemonList.size();i++) {
+      if(PokemonList.get(i).getName().equals(PokName)) {
+        pok = PokemonList.get(i);
+      }
+    }
+    return pok;
   }
 
   @Override
   public int getNumberOfPokemons() {
-    // TODO Auto-generated method stub
-    return 0;
+    return PokemonList.size();
   }
 
   @Override

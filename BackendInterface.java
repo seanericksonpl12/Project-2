@@ -6,7 +6,7 @@ public interface BackendInterface {
   public void addName(String Name);
   public List<String> getTypes();
   public List<String> getAvgTotals();
-  public List<String> getNames();
+  public Pokemon getNames(String n);
   public int getNumberOfPokemons();
   public List<String> getAllTypes();
 }
