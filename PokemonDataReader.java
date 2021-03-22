@@ -9,14 +9,31 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.zip.DataFormatException;
 
+//--== CS400 File Header Information ==--
+//Author: Sean Erickson
+//Email: smerickson4@wisc.edu
+//Team: blue
+//Role: Front end developer
+//TA: hang
+//Lecturer: Gary
+//Notes: 
 public class PokemonDataReader {
 
-	public List<Pokemon> readDataSet() throws FileNotFoundException  {
-		
+	/**
+	 * This method slices up teh csv file and builds a pokemon object for each row,
+	 * adding it to an arraylist after
+	 * 
+	 * @return The arraylist of all the pokemon
+	 * @throws FileNotFoundException if the path specified is wrong
+	 */
+	public List<Pokemon> readDataSet() throws FileNotFoundException {
+		// class path meant for running on eclipse, change when running from command
+		// line!!
 		Scanner sc = new Scanner(new File("src/pokemonGen3.csv"));
-		
+		// Scan in the csv file and create new arraylist to hold the pokemon
 		List<Pokemon> pokemon = new ArrayList<Pokemon>();
 		sc.nextLine();
+		// Loop through the file making new pokemon using the pokemon interface
 		while (sc.hasNext()) {
 			String line = sc.nextLine();
 			String[] splitted = line.split(",");
@@ -76,7 +93,7 @@ public class PokemonDataReader {
 					// TODO Auto-generated method stub
 					if (this.getName().equals(otherPokemon.getName()))
 						return 0;
-					if(this.getTotal()==otherPokemon.getTotal())
+					if (this.getTotal() == otherPokemon.getTotal())
 						return 0;
 					else if (this.getTotal() < otherPokemon.getTotal())
 						return 1;
@@ -89,6 +106,5 @@ public class PokemonDataReader {
 		}
 		sc.close();
 		return pokemon;
-		
 	}
 }
