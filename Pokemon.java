@@ -1,5 +1,3 @@
-import java.util.List;
-
 public interface Pokemon extends Comparable<Pokemon>{
   public String getName();
   public String getType();
