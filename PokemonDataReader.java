@@ -1,4 +1,11 @@
-
+//--== CS400 File Header Information ==--
+//Author: Sean Erickson
+//Email: smerickson4@wisc.edu
+//Team: blue
+//Role: Front end developer
+//TA: hang
+//Lecturer: Gary
+//Notes: 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
