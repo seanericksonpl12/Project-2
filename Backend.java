@@ -1,10 +1,16 @@
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.DataFormatException;
 import java.util.HashMap;
-
+//--== CS400 File Header Information ==--
+//Name: Erhan Wang
+//Email: ewang43@wisc.edu
+//Team: Blue
+//Role: BackEndDeveloper
+//TA: Hang
+//Lecturer: Florian
+//Notes to Grader: <optional extra notes>
 public class Backend implements BackendInterface{
   private RedBlackTree<Pokemon> nameRBT;
   private List<Pokemon> PokemonList;
@@ -15,7 +21,6 @@ public class Backend implements BackendInterface{
     names = new ArrayList<String>();
     nameHash = new HashMap<String,Pokemon>();
     PokemonDataReader pokemonReader = new PokemonDataReader();
-
     PokemonList = pokemonReader.readDataSet();
     nameRBT = new RedBlackTree<Pokemon>();
   }
@@ -71,6 +76,11 @@ public class Backend implements BackendInterface{
     }
     return nms;
   }
-
- 
+  
+  @Override
+  public String printRBT(){
+    String toprint = new String();
+    toprint = nameRBT.root.toString();
+    return toprint;
+  }
 }
