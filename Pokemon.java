@@ -1,7 +1,7 @@
-
+import java.util.List;
 public interface Pokemon {
 	public String getName();
-	public String getType();
+	public List<String> getType();
 	public int getHP();
 	public int getTotal();
 	public int getAttack();
