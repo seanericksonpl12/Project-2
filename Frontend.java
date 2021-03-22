@@ -1,12 +1,23 @@
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.zip.DataFormatException;
 
 public class Frontend {
   static Scanner sc = new Scanner(System.in);
-  static Backend b = new Backend();
+  public static Backend b;
+  
+  public void backend(Backend b) {
+    this.b = b;
+  }
 
   public static void main(String[] args) {
     Frontend F = new Frontend();
-    
+    try {
+      b  = new Backend();
+    } catch (DataFormatException | IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     
     F.run();
      
@@ -27,12 +38,14 @@ public class Frontend {
         addPokemon();
       }else {
         System.out.println("Not a valid input. Please enter a valid command.");
+        run();
+        break;
       }
     }
     
     System.out.println("Thank you for visiting your pokedex. Come back soon!");
     
-    
+    sc.close();
     
   }
   
@@ -49,19 +62,19 @@ public class Frontend {
       run();
     }
    
-    Pokemon p = b.getName(name);
+    Pokemon p = b.checkNames(name);
     
     
     while (p == null) {
       System.out.println("Please enter a valid name.");
       String nameRetry = sc.nextLine();
-      p = b.getName(nameRetry);
+      p = b.checkNames(nameRetry);
       
     }
     
-    b.Insert(p);
+    b.addName(name);
     
-    System.out.println("The pokemon " + p.getName() + "has been added to the pokedex");
+    System.out.println("The pokemon " + p.getName() + " has been added to the pokedex");
     
     
     
@@ -73,12 +86,16 @@ public class Frontend {
     System.out.println("Please enter the name of the pokemon you would like to add then click enter.");
     System.out.println("If you would like to exit enter x.");
     String name = sc.nextLine();
-    Pokemon p = b.getName(name);
+    Pokemon p = b.getNames(name);
+    
+    if (name.equals("x")) {
+      run();
+    }
   
        while (p == null) {
          System.out.println("Please enter a valid name.");
          String nameRetry = sc.nextLine();
-         p = b.getName(nameRetry);
+         p = b.getNames(nameRetry);
          if (name.equals("x")) {
            run();
          }
@@ -101,6 +118,20 @@ public class Frontend {
     }
     
     
+  }
+  
+  public static void listPokemon() {
+    System.out.println("To print a full list of your pokemon input l and click enter. Otherwise enter x to exit.");
+    
+    String command = sc.nextLine();
+    
+    if (command.equals("x")) {
+      run();
+    }else if (command.equals("l")) {
+      b.getAllNames();
+    }
+    
+        
   }
 
 }

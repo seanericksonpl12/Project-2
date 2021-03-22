@@ -41,10 +41,21 @@ public class Backend implements BackendInterface{
         if(pok.getName().equals(Name)) {
           nameRBT.insert(pok);
           nameHash.put(Name,pok);
+          System.out.println("Print good");
         }
       }
     }
+    
     return;
+  }
+  
+  public Pokemon checkNames(String pokemon) {
+    for (int i = 0; i < PokemonList.size(); i++) {
+      if (PokemonList.get(i).getName().equals(pokemon)) {
+        return PokemonList.get(i);
+      }
+    }
+    return null;
   }
 
 
@@ -76,11 +87,12 @@ public class Backend implements BackendInterface{
     }
     return nms;
   }
-  
+  /**
   @Override
   public String printRBT(){
     String toprint = new String();
     toprint = nameRBT.toString();
     return toprint;
   }
+  **/
 }
