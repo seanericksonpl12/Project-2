@@ -1,3 +1,12 @@
+//--== CS400 File Header Information ==--
+//Author: Sean Erickson
+//Email: smerickson4@wisc.edu
+//Team: blue
+//Role: Front end developer
+//TA: hang
+//Lecturer: Gary
+//Notes: This is the test class for the data wranglers implementation
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -6,10 +15,6 @@ import java.io.StringReader;
 import java.util.Collections;
 import java.util.List;
 
-//--== CS400 File Header Information ==--
-//Author: Sean Erickson
-//Email: smerickson4@wisc.edu
-//Notes: This is the test class for the data wranglers implementation
 public class DataWranglerTests {
 
 	PokemonDataReader test;
