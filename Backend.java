@@ -80,7 +80,7 @@ public class Backend implements BackendInterface{
   @Override
   public String printRBT(){
     String toprint = new String();
-    toprint = nameRBT.root.toString();
+    toprint = nameRBT.toString();
     return toprint;
   }
 }
