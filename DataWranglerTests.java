@@ -6,7 +6,6 @@
 //TA: hang
 //Lecturer: Gary
 //Notes: This is the test class for the data wranglers implementation
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.StringReader;
 import java.util.Collections;
 import java.util.List;
+
 
 public class DataWranglerTests {
 
@@ -27,12 +27,7 @@ public class DataWranglerTests {
 		test = new PokemonDataReader();
 		List<Pokemon> pokemonList;
 		try {
-		pokemonList = test.readDataSet();/*new StringReader(
-				"#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary\n"
-						+ "1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False\n"
-						+ "2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False\n"
-						+ "3,Venusaur,Grass,Poison,525,80,82,83,100,100,80,1,False\n"
-						+ "3,VenusaurMega Venusaur,Grass,Poison,625,80,100,123,122,120,80,1,False")); */
+		pokemonList = test.readDataSet();
 		assertEquals(432, pokemonList.size());																							
 		}
 		catch(FileNotFoundException e) {
@@ -49,12 +44,7 @@ public class DataWranglerTests {
 		try {
 		test = new PokemonDataReader();
 		List<Pokemon> pokemonList;
-		pokemonList = test.readDataSet() /*new StringReader(
-				"#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary\n"
-						+ "1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False\n"
-						+ "2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False\n"
-						+ "3,Venusaur,Grass,Poison,525,80,82,83,100,100,80,1,False\n"
-						+ "3,VenusaurMega Venusaur,Grass,Poison,625,80,100,123,122,120,80,1,False"))*/;
+		pokemonList = test.readDataSet();
 
 																								
 																										
@@ -76,12 +66,7 @@ public class DataWranglerTests {
 		try {
 		test = new PokemonDataReader();
 		List<Pokemon> pokemonList;
-		pokemonList = test.readDataSet() /*new StringReader(
-				"#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary\n"
-						+ "1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False\n"
-						+ "2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False\n"
-						+ "3,Venusaur,Grass,Poison,525,80,82,83,100,100,80,1,False\n"
-						+ "3,VenusaurMega Venusaur,Grass,Poison,625,80,100,123,122,120,80,1,False"))*/;
+		pokemonList = test.readDataSet();
 																		
 																										
 								
@@ -107,12 +92,7 @@ public class DataWranglerTests {
 		try {
 		test = new PokemonDataReader();
 		List<Pokemon> pokemonList;
-		pokemonList = test.readDataSet()/*new StringReader(
-				"#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary\n"
-						+ "1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False\n"
-						+ "2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False\n"
-						+ "3,Venusaur,Grass,Poison,525,80,82,83,100,100,80,1,False\n"
-						+ "3,VenusaurMega Venusaur,Grass,Poison,625,80,100,123,122,120,80,1,False"))*/;
+		pokemonList = test.readDataSet();
 																	
 								
 		assertEquals(49, pokemonList.get(0).getAttack());
@@ -137,12 +117,7 @@ public class DataWranglerTests {
 		try {
 		test = new PokemonDataReader();
 		List<Pokemon> pokemonList;
-		pokemonList = test.readDataSet()/*new StringReader(
-				"#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary\n"
-						+ "1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False\n"
-						+ "2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False\n"
-						+ "249,Lugia,Psychic,Flying,680,106,90,130,90,154,110,2,True\n"
-						+ "3,VenusaurMega Venusaur,Grass,Poison,625,80,100,123,122,120,80,1,False"))*/;
+		pokemonList = test.readDataSet();
 																										
 							
 		assertEquals(false, pokemonList.get(0).isLegendary());
