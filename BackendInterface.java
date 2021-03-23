@@ -1,18 +1,6 @@
-//--== CS400 File Header Information ==--
-//Name: Erhan Wang
-//Email: ewang43@wisc.edu
-//Team: Blue
-//Role: BackEndDeveloper
-//TA: Hang
-//Lecturer: Florian
-//Notes to Grader: <optional extra notes>
-/**
- * This is the interface for Backend class
- * 
- * @author Erhan Wang
- * @version 1.0
- *
- */
+
+import java.util.List;
+
 public interface BackendInterface {
   public void addName(String Name);
   public Pokemon getNames(String n);
