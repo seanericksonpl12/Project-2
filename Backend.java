@@ -132,7 +132,9 @@ public class Backend implements BackendInterface{
    * @returnthe name of pokemon in the Pokedex
    */
   public String pokedexNames() {
-    return names.toString();
+    String toprint = new String();
+    toprint = nameRBT.toString();
+    return toprint;
   }
   
 }
